@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/landing-page/static/css/main.bcfaaccd.chunk.css",
+    "main.js": "/landing-page/static/js/main.10b06b5a.chunk.js",
+    "main.js.map": "/landing-page/static/js/main.10b06b5a.chunk.js.map",
+    "runtime-main.js": "/landing-page/static/js/runtime-main.2102ef92.js",
+    "runtime-main.js.map": "/landing-page/static/js/runtime-main.2102ef92.js.map",
+    "static/js/2.efdea3ed.chunk.js": "/landing-page/static/js/2.efdea3ed.chunk.js",
+    "static/js/2.efdea3ed.chunk.js.map": "/landing-page/static/js/2.efdea3ed.chunk.js.map",
+    "static/js/3.bbb39006.chunk.js": "/landing-page/static/js/3.bbb39006.chunk.js",
+    "static/js/3.bbb39006.chunk.js.map": "/landing-page/static/js/3.bbb39006.chunk.js.map",
+    "index.html": "/landing-page/index.html",
+    "static/css/main.bcfaaccd.chunk.css.map": "/landing-page/static/css/main.bcfaaccd.chunk.css.map",
+    "static/js/2.efdea3ed.chunk.js.LICENSE.txt": "/landing-page/static/js/2.efdea3ed.chunk.js.LICENSE.txt",
+    "static/media/alliance-logo.503a9625.svg": "/landing-page/static/media/alliance-logo.503a9625.svg",
+    "static/media/horde-logo.a9a8ced5.svg": "/landing-page/static/media/horde-logo.a9a8ced5.svg",
+    "static/media/App.css": "/landing-page/static/media/shadowlands_gray.b5b4775b.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2102ef92.js",
+    "static/js/2.efdea3ed.chunk.js",
+    "static/css/main.bcfaaccd.chunk.css",
+    "static/js/main.10b06b5a.chunk.js"
+  ]
+}
