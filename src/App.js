@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Drawer, Button } from "@material-ui/core";
+import { Paper, Grid, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import {
@@ -68,7 +68,7 @@ const useStyles = makeStyles(() => ({
 
 const App = ({ width, height, faction }) => {
   const classes = useStyles();
-  const [state, setState] = useState(false);
+  const [menuState, setMenuState] = useState(false);
   const [openLanding, setOpenLanding] = useState(true);
 
   const handleLandingOpen = () => {
@@ -78,27 +78,28 @@ const App = ({ width, height, faction }) => {
     setOpenLanding(false);
   };
 
-  const toggleDrawer = (open) => (event) => {
+  const toggleMenu = (open) => (event) => {
     if (
       event.type === "keydown" &&
       (event.key === "Tab" || event.key === "Shift")
     ) {
       return;
     }
-    setState(open);
+    setMenuState(open);
   };
-
   return (
     <div>
       <MenuIcon
         className={classes.icon}
         fontSize="large"
-        onClick={toggleDrawer(true)}
+        onClick={toggleMenu(true)}
       />
       <Landing onClose={handleLandingClose} open={openLanding} limit={600} />
-      <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
-        <MenuBurger onClose={toggleDrawer} limit={600} />
-      </Drawer>
+      <MenuBurger
+        onMenuClose={toggleMenu}
+        limit={600}
+        menuOpenState={menuState}
+      />
 
       <div className={classes.cover}>
         <Grid container className={classes.gridContainer} spacing={1}>
