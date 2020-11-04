@@ -5,9 +5,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Paper, Grid, Drawer } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
-import { windowWrapperProvider } from "./components/Window/Provider";
-import { windowWrapperConsumer } from "./components/Window/Consumer";
+import {
+  windowWrapperProvider,
+  windowWrapperConsumer,
+} from "./components/Window/Context";
+
 import MenuBurger from "./components/MenuBurger/MenuBurger";
+import {
+  withFactionConsumer,
+  withFactionProvider,
+} from "./components/Faction/Context";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -41,15 +48,6 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     minHeight: "50%",
   },
-  listcontainer: {
-    display: "flex",
-    flexDirection: "column",
-    flexBasis: "100%",
-    height: "100vh",
-    width: "50vw",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   icon: {
     position: "sticky",
     marginLeft: "auto",
@@ -69,7 +67,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const App = ({ width, height }) => {
+const App = ({ width, height, faction, changeFaction }) => {
   const classes = useStyles();
   const [state, setState] = useState(false);
 
@@ -100,6 +98,21 @@ const App = ({ width, height }) => {
           <Grid className={classes.gridItem} height="150%" item xs={12}>
             <Paper className={classes.paper}>
               Width: {width} - Height: {height}
+              Current Faction: {faction}
+            </Paper>
+            <Paper
+              onClick={() => {
+                changeFaction("horde");
+              }}
+            >
+              Set faction to horde
+            </Paper>
+            <Paper
+              onClick={() => {
+                changeFaction("alliance");
+              }}
+            >
+              Set faction to alliance
             </Paper>
           </Grid>
           <Grid className={classes.gridItem} item xs={6}>
@@ -118,4 +131,6 @@ const App = ({ width, height }) => {
   );
 };
 
-export default windowWrapperProvider(windowWrapperConsumer(App));
+export default withFactionProvider(
+  withFactionConsumer(windowWrapperProvider(windowWrapperConsumer(App)))
+);
