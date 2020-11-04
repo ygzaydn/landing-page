@@ -108,7 +108,7 @@ const App = ({ width, height, faction }) => {
             </Paper>
           </Grid>
           <Grid className={classes.gridItem} height="150%" item xs={12}>
-            <Paper className={classes.paper}>Current Faction: {faction}</Paper>
+            <Paper className={classes.paper}>{faction}</Paper>
           </Grid>
           <Grid className={classes.gridItem} height="150%" item xs={12}>
             <Button onClick={handleLandingOpen}>Change Faction</Button>
