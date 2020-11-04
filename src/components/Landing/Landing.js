@@ -23,13 +23,10 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     borderRadius: 20,
     margin: "auto",
-    minHeight: "90vh",
+    maxHeight: "90vh",
   },
   gridContainer: {
-    minWidth: "350px",
-    maxWidth: "600px",
-    minHeight: "25vh",
-    maxHeight: "500px",
+    margin: 0,
     background: "gray",
   },
   gridItem: {
