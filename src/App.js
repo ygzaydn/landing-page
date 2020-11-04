@@ -7,10 +7,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import { windowWrapperProvider } from "./components/Window/Provider";
 import { windowWrapperConsumer } from "./components/Window/Consumer";
-import {
-  MenuBurgerDesktop,
-  MenuBurgerMobile,
-} from "./components/MenuBurger/MenuBurger";
+import MenuBurger from "./components/MenuBurger/MenuBurger";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -95,14 +92,14 @@ const App = ({ width, height }) => {
       />
 
       <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
-        {width >= 500 ? <MenuBurgerDesktop /> : <MenuBurgerMobile />}
+        <MenuBurger onClose={toggleDrawer} />
       </Drawer>
 
       <div className={classes.cover}>
         <Grid container className={classes.gridContainer} spacing={1}>
           <Grid className={classes.gridItem} height="150%" item xs={12}>
             <Paper className={classes.paper}>
-              {width} - {height}
+              Width: {width} - Height: {height}
             </Paper>
           </Grid>
           <Grid className={classes.gridItem} item xs={6}>

@@ -1,6 +1,8 @@
 import React from "react";
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { windowWrapperConsumer } from "../Window/Consumer";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const useStyles = makeStyles(() => ({
   listcontainerDesktop: {
@@ -19,30 +21,30 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const MenuBurgerDesktop = () => {
+const MenuBurger = ({ width, onClose }) => {
+  console.log(width);
   const classes = useStyles();
   return (
     <div>
-      <List className={classes.listcontainerDesktop}>
-        <ListItem>Community</ListItem>
-        <ListItem>Prices</ListItem>
-        <ListItem>List</ListItem>
-        <ListItem>Boost</ListItem>
-      </List>
+      {width < 500 ? (
+        <List className={classes.listcontainerMobile}>
+          <HighlightOffIcon onClick={onClose(false)} />
+          <ListItem>Community</ListItem>
+          <ListItem>Prices</ListItem>
+          <ListItem>List</ListItem>
+          <ListItem>Boost</ListItem>
+        </List>
+      ) : (
+        <List className={classes.listcontainerDesktop}>
+          <HighlightOffIcon onClick={onClose(false)} />
+          <ListItem>Community</ListItem>
+          <ListItem>Prices</ListItem>
+          <ListItem>List</ListItem>
+          <ListItem>Boost</ListItem>
+        </List>
+      )}
     </div>
   );
 };
 
-export const MenuBurgerMobile = () => {
-  const classes = useStyles();
-  return (
-    <div>
-      <List className={classes.listcontainerMobile}>
-        <ListItem>Community</ListItem>
-        <ListItem>Prices</ListItem>
-        <ListItem>List</ListItem>
-        <ListItem>Boost</ListItem>
-      </List>
-    </div>
-  );
-};
+export default windowWrapperConsumer(MenuBurger);
