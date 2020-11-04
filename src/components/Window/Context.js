@@ -1,6 +1,6 @@
 import React from "react";
-import { windowWrapperProvider } from "./Provider";
-import { windowWrapperConsumer } from "./Consumer";
+import { withWindowProvider } from "./Provider";
+import { withWindowConsumer } from "./Consumer";
 
 export const WindowContext = React.createContext(null);
-export { windowWrapperConsumer, windowWrapperProvider };
+export { withWindowConsumer, withWindowProvider };

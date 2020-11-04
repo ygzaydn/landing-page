@@ -1,7 +1,7 @@
 import React from "react";
 import { List, ListItem } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { windowWrapperConsumer } from "../Window/Consumer";
+import { withWindowConsumer } from "../Window/Context";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
 const useStyles = makeStyles(() => ({
@@ -47,4 +47,4 @@ const MenuBurger = ({ width, onClose }) => {
   );
 };
 
-export default windowWrapperConsumer(MenuBurger);
+export default withWindowConsumer(MenuBurger);

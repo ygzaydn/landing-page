@@ -1,8 +1,8 @@
 import React from "react";
 import { WindowContext } from "./Context";
 
-export const windowWrapperConsumer = (Component) => {
-  const WindowWrapperConsumer = (props) => {
+export const withWindowConsumer = (Component) => {
+  const WithWindowConsumer = (props) => {
     return (
       <WindowContext.Consumer>
         {({ width, height }) => (
@@ -11,5 +11,5 @@ export const windowWrapperConsumer = (Component) => {
       </WindowContext.Consumer>
     );
   };
-  return WindowWrapperConsumer;
+  return WithWindowConsumer;
 };

@@ -6,8 +6,8 @@ import { Paper, Grid, Drawer } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import {
-  windowWrapperProvider,
-  windowWrapperConsumer,
+  withWindowProvider,
+  withWindowConsumer,
 } from "./components/Window/Context";
 
 import MenuBurger from "./components/MenuBurger/MenuBurger";
@@ -100,30 +100,26 @@ const App = ({ width, height, faction, changeFaction }) => {
               Width: {width} - Height: {height}
               Current Faction: {faction}
             </Paper>
-            <Paper
-              onClick={() => {
-                changeFaction("horde");
-              }}
-            >
-              Set faction to horde
-            </Paper>
-            <Paper
-              onClick={() => {
-                changeFaction("alliance");
-              }}
-            >
-              Set faction to alliance
-            </Paper>
           </Grid>
           <Grid className={classes.gridItem} item xs={6}>
             <img
               className={classes.logo}
+              onClick={() => {
+                changeFaction("Alliance");
+              }}
               src={AllianceLogo}
               alt="Alliance Logo"
             />
           </Grid>
           <Grid className={classes.gridItem} item xs={6}>
-            <img className={classes.logo} src={HordeLogo} alt="Horde Logo" />
+            <img
+              className={classes.logo}
+              src={HordeLogo}
+              alt="Horde Logo"
+              onClick={() => {
+                changeFaction("Horde");
+              }}
+            />
           </Grid>
         </Grid>
       </div>
@@ -132,5 +128,5 @@ const App = ({ width, height, faction, changeFaction }) => {
 };
 
 export default withFactionProvider(
-  withFactionConsumer(windowWrapperProvider(windowWrapperConsumer(App)))
+  withFactionConsumer(withWindowProvider(withWindowConsumer(App)))
 );

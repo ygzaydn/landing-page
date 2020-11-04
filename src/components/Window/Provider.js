@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { WindowContext } from "./Context";
 
-export const windowWrapperProvider = (Component) => {
+export const withWindowProvider = (Component) => {
   const WindowWrapper = (props) => {
     const getDimensions = () => {
       const w = window;
