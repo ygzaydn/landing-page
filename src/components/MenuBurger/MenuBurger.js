@@ -21,12 +21,12 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MenuBurger = ({ width, onClose }) => {
+const MenuBurger = ({ width, onClose, limit }) => {
   console.log(width);
   const classes = useStyles();
   return (
     <div>
-      {width < 500 ? (
+      {width <= limit ? (
         <List className={classes.listcontainerMobile}>
           <HighlightOffIcon onClick={onClose(false)} />
           <ListItem>Community</ListItem>

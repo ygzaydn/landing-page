@@ -4,6 +4,7 @@ import HordeLogo from "../../assets/horde-logo.svg";
 import AllianceLogo from "../../assets/alliance-logo.svg";
 import { makeStyles } from "@material-ui/core/styles";
 import { withFactionConsumer } from "../Faction/Context";
+import { withWindowConsumer } from "../Window/Context";
 
 const useStyles = makeStyles(() => ({
   paper: {
@@ -49,44 +50,76 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Landing = ({ changeFaction, onClose, open }) => {
+const Landing = ({ changeFaction, onClose, open, width, limit }) => {
   const classes = useStyles();
   const handleClose = () => {
     onClose();
   };
   return (
     <Dialog onClose={handleClose} open={open}>
-      <div className={classes.cover}>
-        <Grid container className={classes.gridContainer} spacing={1}>
-          <Grid className={classes.gridItem} height="150%" item xs={12}>
-            <Paper className={classes.paper}>Choose your faction</Paper>
+      {width >= limit ? (
+        <div className={classes.cover}>
+          <Grid container className={classes.gridContainer} spacing={1}>
+            <Grid className={classes.gridItem} height="150%" item xs={12}>
+              <Paper className={classes.paper}>Choose your faction</Paper>
+            </Grid>
+            <Grid className={classes.gridItem} item xs={6}>
+              <img
+                className={classes.logo}
+                onClick={() => {
+                  changeFaction("Alliance");
+                  handleClose();
+                }}
+                src={AllianceLogo}
+                alt="Alliance Logo"
+              />
+            </Grid>
+            <Grid className={classes.gridItem} item xs={6}>
+              <img
+                className={classes.logo}
+                src={HordeLogo}
+                alt="Horde Logo"
+                onClick={() => {
+                  changeFaction("Horde");
+                  handleClose();
+                }}
+              />
+            </Grid>
           </Grid>
-          <Grid className={classes.gridItem} item xs={6}>
-            <img
-              className={classes.logo}
-              onClick={() => {
-                changeFaction("Alliance");
-                handleClose();
-              }}
-              src={AllianceLogo}
-              alt="Alliance Logo"
-            />
+        </div>
+      ) : (
+        <div className={classes.cover}>
+          <Grid container className={classes.gridContainer} spacing={1}>
+            <Grid className={classes.gridItem} height="150%" item xs={12}>
+              <Paper className={classes.paper}>Choose your faction</Paper>
+            </Grid>
+            <Grid className={classes.gridItem} item xs={12}>
+              <img
+                className={classes.logo}
+                onClick={() => {
+                  changeFaction("Alliance");
+                  handleClose();
+                }}
+                src={AllianceLogo}
+                alt="Alliance Logo"
+              />
+            </Grid>
+            <Grid className={classes.gridItem} item xs={12}>
+              <img
+                className={classes.logo}
+                src={HordeLogo}
+                alt="Horde Logo"
+                onClick={() => {
+                  changeFaction("Horde");
+                  handleClose();
+                }}
+              />
+            </Grid>
           </Grid>
-          <Grid className={classes.gridItem} item xs={6}>
-            <img
-              className={classes.logo}
-              src={HordeLogo}
-              alt="Horde Logo"
-              onClick={() => {
-                changeFaction("Horde");
-                handleClose();
-              }}
-            />
-          </Grid>
-        </Grid>
-      </div>
+        </div>
+      )}
     </Dialog>
   );
 };
 
-export default withFactionConsumer(Landing);
+export default withWindowConsumer(withFactionConsumer(Landing));

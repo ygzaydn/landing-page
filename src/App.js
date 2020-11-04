@@ -95,9 +95,9 @@ const App = ({ width, height, faction }) => {
         fontSize="large"
         onClick={toggleDrawer(true)}
       />
-      <Landing onClose={handleLandingClose} open={openLanding} />
+      <Landing onClose={handleLandingClose} open={openLanding} limit={600} />
       <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
-        <MenuBurger onClose={toggleDrawer} />
+        <MenuBurger onClose={toggleDrawer} limit={600} />
       </Drawer>
 
       <div className={classes.cover}>
