@@ -53,7 +53,7 @@ const Landing = ({ changeFaction, onClose, open, width, limit }) => {
     onClose();
   };
   return (
-    <Dialog onClose={handleClose} open={open}>
+    <Dialog  open={open}>
       {width >= limit ? (
         <div className={classes.cover}>
           <Grid container className={classes.gridContainer} spacing={1}>

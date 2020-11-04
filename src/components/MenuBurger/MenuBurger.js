@@ -8,6 +8,9 @@ const useStyles = makeStyles(() => ({
   drawerMain: {
     backgroundColor: "black",
   },
+  button: {
+    color:'white'
+  },
   listItem: {
     color: "black",
     fontSize: "60px",
@@ -52,14 +55,14 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
       <div>
         {width <= limit ? (
           <List className={classes.listcontainerMobile}>
-            <HighlightOffIcon onClick={onMenuClose(false)} />
+            <HighlightOffIcon className={classes.button} onClick={onMenuClose(false)} />
             {items.map((el) => (
               <ListItem className={classes.listItem}>{el}</ListItem>
             ))}
           </List>
         ) : (
           <List className={classes.listcontainerDesktop}>
-            <HighlightOffIcon onClick={onMenuClose(false)} />
+            <HighlightOffIcon className={classes.button} onClick={onMenuClose(false)} />
             {items.map((el) => (
               <ListItem className={classes.listItem}>{el}</ListItem>
             ))}
