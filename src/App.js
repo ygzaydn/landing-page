@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import HordeLogo from "./assets/horde-logo.svg";
-import AllianceLogo from "./assets/alliance-logo.svg";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Drawer } from "@material-ui/core";
+import { Paper, Grid, Drawer, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import {
@@ -11,6 +9,7 @@ import {
 } from "./components/Window/Context";
 
 import MenuBurger from "./components/MenuBurger/MenuBurger";
+import Landing from "./components/Landing/Landing";
 import {
   withFactionConsumer,
   withFactionProvider,
@@ -67,9 +66,17 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const App = ({ width, height, faction, changeFaction }) => {
+const App = ({ width, height, faction }) => {
   const classes = useStyles();
   const [state, setState] = useState(false);
+  const [openLanding, setOpenLanding] = useState(true);
+
+  const handleLandingOpen = () => {
+    setOpenLanding(true);
+  };
+  const handleLandingClose = () => {
+    setOpenLanding(false);
+  };
 
   const toggleDrawer = (open) => (event) => {
     if (
@@ -88,7 +95,7 @@ const App = ({ width, height, faction, changeFaction }) => {
         fontSize="large"
         onClick={toggleDrawer(true)}
       />
-
+      <Landing onClose={handleLandingClose} open={openLanding} />
       <Drawer anchor={"right"} open={state} onClose={toggleDrawer(false)}>
         <MenuBurger onClose={toggleDrawer} />
       </Drawer>
@@ -98,28 +105,13 @@ const App = ({ width, height, faction, changeFaction }) => {
           <Grid className={classes.gridItem} height="150%" item xs={12}>
             <Paper className={classes.paper}>
               Width: {width} - Height: {height}
-              Current Faction: {faction}
             </Paper>
           </Grid>
-          <Grid className={classes.gridItem} item xs={6}>
-            <img
-              className={classes.logo}
-              onClick={() => {
-                changeFaction("Alliance");
-              }}
-              src={AllianceLogo}
-              alt="Alliance Logo"
-            />
+          <Grid className={classes.gridItem} height="150%" item xs={12}>
+            <Paper className={classes.paper}>Current Faction: {faction}</Paper>
           </Grid>
-          <Grid className={classes.gridItem} item xs={6}>
-            <img
-              className={classes.logo}
-              src={HordeLogo}
-              alt="Horde Logo"
-              onClick={() => {
-                changeFaction("Horde");
-              }}
-            />
+          <Grid className={classes.gridItem} height="150%" item xs={12}>
+            <Button onClick={handleLandingOpen}>Change Faction</Button>
           </Grid>
         </Grid>
       </div>
