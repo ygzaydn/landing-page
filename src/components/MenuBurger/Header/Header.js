@@ -6,7 +6,10 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
   button: {
-    color: "white",
+    position: "absolute",
+    left: "5%",
+    top: "3%",
+    transform: "scale(1.75)",
   },
 }));
 

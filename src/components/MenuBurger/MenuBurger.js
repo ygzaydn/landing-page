@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  List,
-  ListItem,
-  Drawer,
-  Grid,
-  Typography,
-  Divider,
-} from "@material-ui/core";
+import { List, ListItem, Drawer, Grid, Divider } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { withWindowConsumer } from "../Window/Context";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Header from "./Header/Header";
 import BigMenu from "./BigMenu/BigMenu";
+import MediumMenu from "./MediumMenu/MediumMenu";
+import SmallMenu from "./SmallMenu/SmallMenu";
 
 const useStyles = makeStyles(() => ({
   drawerMain: {
@@ -22,6 +17,9 @@ const useStyles = makeStyles(() => ({
   },
   button: {
     color: "white",
+  },
+  dividerContainer: {
+    margin: "auto",
   },
   listItem: {
     color: "black",
@@ -89,27 +87,15 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
             text={"Giveaway"}
             clickFunction={() => console.log("Giveaway")}
           />
-
-          <Divider className={classes.button} flexItem={true} />
-          <Grid item xs={6}>
-            <Typography className={classes.footer}>Small</Typography>
+          <MediumMenu text={"Contacts"} />
+          <MediumMenu text={"Recruitment"} />
+          <Grid item xs={12} sm={1} className={classes.dividerContainer}>
+            <Divider variant="middle" />{" "}
           </Grid>
-          <Grid item xs={6}>
-            <Typography className={classes.footer}>Small</Typography>
-          </Grid>
-
-          <Grid item xs={3}>
-            <Typography className={classes.footer}>Footer</Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography className={classes.footer}>Footer</Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography className={classes.footer}>Footer</Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography className={classes.footer}>Footer</Typography>
-          </Grid>
+          <SmallMenu text={"YOUTUBE"} />
+          <SmallMenu text={"INSTAGRAM"} />
+          <SmallMenu text={"FACEBOOK"} />
+          <SmallMenu text={"TWITTER"} />
         </Grid>
       ) : (
         <List className={classes.listcontainerDesktop}>
