@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper, Grid, Button } from "@material-ui/core";
+import { Paper, Grid, Button, Container } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import "./App.css";
 import {
@@ -88,7 +88,7 @@ const App = ({ width, height, faction }) => {
     setMenuState(open);
   };
   return (
-    <div>
+    <Container maxWidth="xl">
       <MenuIcon
         className={classes.icon}
         fontSize="large"
@@ -96,8 +96,7 @@ const App = ({ width, height, faction }) => {
       />
       <Landing onClose={handleLandingClose} open={openLanding} />
       <MenuBurger onMenuClose={toggleMenu} menuOpenState={menuState} />
-
-      <div>
+      <Container maxWidth="xl">
         <Grid container className={classes.gridContainer} spacing={1}>
           <Grid className={classes.gridItem} height="150%" item xs={12}>
             <Paper className={classes.paper}>
@@ -111,8 +110,8 @@ const App = ({ width, height, faction }) => {
             <Button onClick={handleLandingOpen}>Change Faction</Button>
           </Grid>
         </Grid>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 

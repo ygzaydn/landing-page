@@ -18,6 +18,10 @@ const useStyles = makeStyles(() => ({
   button: {
     color: "white",
   },
+  divider: {
+    border: "1px gray solid",
+    height: "0px",
+  },
   dividerContainer: {
     margin: "auto",
   },
@@ -52,7 +56,7 @@ const useStyles = makeStyles(() => ({
 
 const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
   const classes = useStyles();
-  const { drawerMain, containerMain } = classes;
+  const { drawerMain, containerMain, divider, dividerContainer } = classes;
   const items = ["Community", "Prices", "List", "Boost"];
 
   return (
@@ -89,8 +93,20 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
           />
           <MediumMenu text={"Contacts"} />
           <MediumMenu text={"Recruitment"} />
-          <Grid item xs={12} sm={1} className={classes.dividerContainer}>
-            <Divider variant="middle" />{" "}
+          <Grid
+            item
+            xs={12}
+            sm={1}
+            classes={{
+              root: dividerContainer,
+            }}
+          >
+            <Divider
+              classes={{
+                middle: divider,
+              }}
+              variant="middle"
+            />{" "}
           </Grid>
           <SmallMenu text={"YOUTUBE"} />
           <SmallMenu text={"INSTAGRAM"} />

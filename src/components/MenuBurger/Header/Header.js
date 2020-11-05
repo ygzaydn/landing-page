@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
     left: "5%",
     top: "3%",
     transform: "scale(1.75)",
+    color: "white",
   },
 }));
 
