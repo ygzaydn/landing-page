@@ -1,5 +1,5 @@
 import React from "react";
-import { List, ListItem, Drawer } from "@material-ui/core";
+import { List, ListItem, Drawer, Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { withWindowConsumer } from "../Window/Context";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
@@ -49,10 +49,13 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
         paperAnchorRight: drawerMain,
       }}
     >
-      <div>
+      <Container>
         {width <= limit ? (
           <List className={classes.listcontainerMobile}>
-            <HighlightOffIcon onClick={onMenuClose(false)} />
+            <HighlightOffIcon
+              className={classes.listItem}
+              onClick={onMenuClose(false)}
+            />
             {items.map((el) => (
               <ListItem className={classes.listItem}>{el}</ListItem>
             ))}
@@ -65,7 +68,7 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
             ))}
           </List>
         )}
-      </div>
+      </Container>
     </Drawer>
   );
 };
