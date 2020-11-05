@@ -6,7 +6,7 @@ import { withWindowConsumer } from "../../Window/Context";
 const useStyles = makeStyles(() => ({
   smallMenuItem: {
     color: "lightgray",
-    fontSize: "15px",
+    fontSize: "3vw",
     alignSelf: "center",
     "&:hover": {
       color: "white",

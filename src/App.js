@@ -66,7 +66,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const App = ({ width, height, faction, limit }) => {
+const App = ({ width, height, faction }) => {
   const classes = useStyles();
   const [menuState, setMenuState] = useState(false);
   const [openLanding, setOpenLanding] = useState(true);
@@ -97,7 +97,7 @@ const App = ({ width, height, faction, limit }) => {
       <Landing onClose={handleLandingClose} open={openLanding} />
       <MenuBurger onMenuClose={toggleMenu} menuOpenState={menuState} />
 
-      <div className={classes.cover}>
+      <div>
         <Grid container className={classes.gridContainer} spacing={1}>
           <Grid className={classes.gridItem} height="150%" item xs={12}>
             <Paper className={classes.paper}>

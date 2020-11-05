@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     justifyContent: "center",
     alignContent: "center",
-    fontSize: "60px",
+    fontSize: "12vw",
     WebkitTextStrokeColor: "white",
     WebkitTextStrokeWidth: "1px",
     "&:hover": {

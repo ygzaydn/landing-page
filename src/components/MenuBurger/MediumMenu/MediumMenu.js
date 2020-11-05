@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
   mediumItem: {
     color: "gray",
-    fontSize: "30px",
+    fontSize: "6vw",
     alignSelf: "center",
     "&:hover": {
       color: "white",
