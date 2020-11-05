@@ -75,16 +75,20 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
           }}
         >
           <Header onMenuClose={onMenuClose} />
+          <BigMenu text={"Home"} clickFunction={() => console.log("Home")} />
           <BigMenu
-            text={"Community"}
-            clickFunction={() => console.log("Community")}
+            text={"Product"}
+            clickFunction={() => console.log("Product")}
           />
           <BigMenu
-            text={"Prices"}
-            clickFunction={() => console.log("Prices")}
+            text={"Discount"}
+            clickFunction={() => console.log("Discount")}
+            hotDeal={true}
           />
-          <BigMenu text={"List"} clickFunction={() => console.log("List")} />
-          <BigMenu text={"Boost"} clickFunction={() => console.log("Boost")} />
+          <BigMenu
+            text={"Giveaway"}
+            clickFunction={() => console.log("Giveaway")}
+          />
 
           <Divider className={classes.button} flexItem={true} />
           <Grid item xs={6}>
