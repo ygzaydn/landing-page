@@ -1,12 +1,26 @@
 import React from "react";
-import { List, ListItem, Drawer, Container } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  Drawer,
+  Grid,
+  Typography,
+  Divider,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { withWindowConsumer } from "../Window/Context";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import Header from "./Header/Header";
 
 const useStyles = makeStyles(() => ({
   drawerMain: {
     backgroundColor: "black",
+  },
+  containerMain: {
+    height: "100%",
+  },
+  button: {
+    color: "white",
   },
   listItem: {
     color: "black",
@@ -32,11 +46,14 @@ const useStyles = makeStyles(() => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  footer: {
+    color: "white",
+  },
 }));
 
 const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
   const classes = useStyles();
-  const { drawerMain } = classes;
+  const { drawerMain, containerMain } = classes;
   const items = ["Community", "Prices", "List", "Boost"];
 
   return (
@@ -49,26 +66,51 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
         paperAnchorRight: drawerMain,
       }}
     >
-      <Container>
-        {width <= limit ? (
-          <List className={classes.listcontainerMobile}>
-            <HighlightOffIcon
-              className={classes.listItem}
-              onClick={onMenuClose(false)}
-            />
-            {items.map((el) => (
-              <ListItem className={classes.listItem}>{el}</ListItem>
-            ))}
-          </List>
-        ) : (
-          <List className={classes.listcontainerDesktop}>
-            <HighlightOffIcon onClick={onMenuClose(false)} />
-            {items.map((el) => (
-              <ListItem className={classes.listItem}>{el}</ListItem>
-            ))}
-          </List>
-        )}
-      </Container>
+      {width <= limit ? (
+        <Grid
+          container
+          classes={{
+            container: containerMain,
+          }}
+        >
+          <Header onMenuClose={onMenuClose} limit={limit} />
+          {items.map((el) => (
+            <Grid item xs={12}>
+              <Typography className={classes.listItem}>{el}</Typography>
+            </Grid>
+          ))}
+          <Divider className={classes.button} flexItem={true} />
+          <Grid item xs={6}>
+            <Typography className={classes.footer}>Small</Typography>
+          </Grid>
+          <Grid item xs={6}>
+            <Typography className={classes.footer}>Small</Typography>
+          </Grid>
+
+          <Grid item xs={3}>
+            <Typography className={classes.footer}>Footer</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography className={classes.footer}>Footer</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography className={classes.footer}>Footer</Typography>
+          </Grid>
+          <Grid item xs={3}>
+            <Typography className={classes.footer}>Footer</Typography>
+          </Grid>
+        </Grid>
+      ) : (
+        <List className={classes.listcontainerDesktop}>
+          <HighlightOffIcon
+            className={classes.button}
+            onClick={onMenuClose(false)}
+          />
+          {items.map((el) => (
+            <ListItem className={classes.listItem}>{el}</ListItem>
+          ))}
+        </List>
+      )}
     </Drawer>
   );
 };
