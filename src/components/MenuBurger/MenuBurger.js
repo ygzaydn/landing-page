@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { withWindowConsumer } from "../Window/Context";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Header from "./Header/Header";
+import BigMenu from "./BigMenu/BigMenu";
 
 const useStyles = makeStyles(() => ({
   drawerMain: {
@@ -74,11 +75,17 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
           }}
         >
           <Header onMenuClose={onMenuClose} />
-          {items.map((el) => (
-            <Grid item xs={12}>
-              <Typography className={classes.listItem}>{el}</Typography>
-            </Grid>
-          ))}
+          <BigMenu
+            text={"Community"}
+            clickFunction={() => console.log("Community")}
+          />
+          <BigMenu
+            text={"Prices"}
+            clickFunction={() => console.log("Prices")}
+          />
+          <BigMenu text={"List"} clickFunction={() => console.log("List")} />
+          <BigMenu text={"Boost"} clickFunction={() => console.log("Boost")} />
+
           <Divider className={classes.button} flexItem={true} />
           <Grid item xs={6}>
             <Typography className={classes.footer}>Small</Typography>
