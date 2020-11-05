@@ -74,6 +74,7 @@ const useStyles = makeStyles(() => ({
 const MenuBurger = ({ width, height, limit, menuOpenState, onMenuClose }) => {
   const classes = useStyles();
   const { drawerMain, containerMain, divider, dividerContainer } = classes;
+  const cellHeight = height / 8;
   return (
     <Drawer
       anchor={"right"}
@@ -130,16 +131,16 @@ const MenuBurger = ({ width, height, limit, menuOpenState, onMenuClose }) => {
       ) : (
         <Container className={classes.gridTileDesktop}>
           <GridList
-            cellHeight={height / 7}
+            cellHeight={cellHeight}
             className={classes.gridTile}
             cols={5}
             rows={7}
           >
             <GridListTile cols={4} rows={7}>
               <Header />
-              <GridList cols={4} rows={5}>
+              <GridList cellHeight={cellHeight} cols={4} rows={5}>
                 <GridListTile cols={2} rows={5}>
-                  <GridList cols={1} rows={5}>
+                  <GridList cellHeight={cellHeight} cols={1} rows={5}>
                     <GridListTile cols={1} rows={1}>
                       <Typography className={classes.button}>Search</Typography>
                     </GridListTile>
@@ -161,7 +162,7 @@ const MenuBurger = ({ width, height, limit, menuOpenState, onMenuClose }) => {
                   <Typography className={classes.button}>Menu Image</Typography>
                 </GridListTile>
               </GridList>
-              <GridList rows={1} cols={4}>
+              <GridList cellHeight={cellHeight} rows={1} cols={4}>
                 <GridListTile rows={1} cols={2}>
                   <Typography className={classes.button}>m1</Typography>
                 </GridListTile>
