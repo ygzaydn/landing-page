@@ -11,6 +11,7 @@ import SmallMenu from "./SmallMenu/SmallMenu";
 const useStyles = makeStyles(() => ({
   drawerMain: {
     backgroundColor: "black",
+    WebkitOverflowScrolling: "touch",
   },
   containerMain: {
     height: "100%",
@@ -61,7 +62,6 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
 
   return (
     <Drawer
-      className={classes.drawermain}
       anchor={"right"}
       open={menuOpenState}
       onClose={onMenuClose(false)}
