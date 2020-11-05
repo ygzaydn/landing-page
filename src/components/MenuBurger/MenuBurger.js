@@ -14,6 +14,7 @@ import Header from "./Header/Header";
 import BigMenu from "./BigMenu/BigMenu";
 import MediumMenu from "./MediumMenu/MediumMenu";
 import SmallMenu from "./SmallMenu/SmallMenu";
+import RightBar from "./RightBar/RightBar";
 
 const useStyles = makeStyles(() => ({
   drawerMain: {
@@ -161,7 +162,7 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
               </GridList>
             </GridListTile>
             <GridListTile cols={1} rows={7}>
-              <Typography className={classes.button}>Right Side</Typography>
+              <RightBar />
             </GridListTile>
           </GridList>
         </Container>

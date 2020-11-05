@@ -23,6 +23,10 @@ const useStyles = makeStyles(() => ({
     width: "20px",
     height: "auto",
   },
+  bigMenuContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
 }));
 
 const Header = ({ width, limit, onMenuClose, faction }) => {
@@ -39,8 +43,8 @@ const Header = ({ width, limit, onMenuClose, faction }) => {
     );
   } else {
     return (
-      <Container>
-        {faction == "Horde" ? (
+      <Container className={classes.bigMenuContainer}>
+        {faction === "Horde" ? (
           <img className={classes.logo} src={HordeLogo} alt="Horde Logo" />
         ) : (
           <img
