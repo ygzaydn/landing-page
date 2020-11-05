@@ -1,8 +1,15 @@
 import React from "react";
-import { List, ListItem, Drawer, Grid, Divider } from "@material-ui/core";
+import {
+  Drawer,
+  Grid,
+  Divider,
+  GridList,
+  GridListTile,
+  Typography,
+  Container,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { withWindowConsumer } from "../Window/Context";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Header from "./Header/Header";
 import BigMenu from "./BigMenu/BigMenu";
 import MediumMenu from "./MediumMenu/MediumMenu";
@@ -43,6 +50,10 @@ const useStyles = makeStyles(() => ({
     alignItems: "center",
     color: "black",
   },
+  gridTileDesktop: {
+    color: "black",
+    minWidth: "50vw",
+  },
   listcontainerMobile: {
     display: "flex",
     flexDirection: "column",
@@ -58,8 +69,6 @@ const useStyles = makeStyles(() => ({
 const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
   const classes = useStyles();
   const { drawerMain, containerMain, divider, dividerContainer } = classes;
-  const items = ["Community", "Prices", "List", "Boost"];
-
   return (
     <Drawer
       anchor={"right"}
@@ -114,15 +123,48 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
           <SmallMenu text={"TWITTER"} />
         </Grid>
       ) : (
-        <List className={classes.listcontainerDesktop}>
-          <HighlightOffIcon
-            className={classes.button}
-            onClick={onMenuClose(false)}
-          />
-          {items.map((el) => (
-            <ListItem className={classes.listItem}>{el}</ListItem>
-          ))}
-        </List>
+        <Container className={classes.gridTileDesktop}>
+          <GridList cellHeight={"(100 / 7)vh"} cols={5} rows={7}>
+            <GridListTile cols={4} rows={7}>
+              <Header />
+              <GridList cellHeight={"(100 / 5)vh"} cols={4} rows={5}>
+                <GridListTile cols={2} rows={5}>
+                  <GridList cellHeight={"(100 / 5)vh"} cols={1} rows={5}>
+                    <GridListTile cols={1} rows={1}>
+                      <Typography className={classes.button}>Search</Typography>
+                    </GridListTile>
+                    <GridListTile cols={1} rows={1}>
+                      <Typography className={classes.button}>b1</Typography>
+                    </GridListTile>
+                    <GridListTile cols={1} rows={1}>
+                      <Typography className={classes.button}>b2</Typography>
+                    </GridListTile>
+                    <GridListTile cols={1} rows={1}>
+                      <Typography className={classes.button}>b3</Typography>
+                    </GridListTile>
+                    <GridListTile cols={1} rows={1}>
+                      <Typography className={classes.button}>b4</Typography>
+                    </GridListTile>
+                  </GridList>
+                </GridListTile>
+                <GridListTile cols={2} rows={5}>
+                  <Typography className={classes.button}>Menu Image</Typography>
+                </GridListTile>
+              </GridList>
+              <GridList rows={1} cols={4}>
+                <GridListTile rows={1} cols={2}>
+                  <Typography className={classes.button}>m1</Typography>
+                </GridListTile>
+                <GridListTile rows={1} cols={2}>
+                  <Typography className={classes.button}>m2</Typography>
+                </GridListTile>
+              </GridList>
+            </GridListTile>
+            <GridListTile cols={1} rows={7}>
+              <Typography className={classes.button}>Right Side</Typography>
+            </GridListTile>
+          </GridList>
+        </Container>
       )}
     </Drawer>
   );
