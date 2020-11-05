@@ -6,7 +6,7 @@ const useStyles = makeStyles(() => ({
   rightBarContainer: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     height: "100%",
   },
   rightBarTypography: {

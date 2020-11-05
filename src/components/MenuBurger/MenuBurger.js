@@ -34,6 +34,9 @@ const useStyles = makeStyles(() => ({
   dividerContainer: {
     margin: "auto",
   },
+  gridTile: {
+    height: "100%",
+  },
   listItem: {
     color: "black",
     fontSize: "60px",
@@ -54,6 +57,7 @@ const useStyles = makeStyles(() => ({
   gridTileDesktop: {
     color: "black",
     minWidth: "50vw",
+    height: "100%",
   },
   listcontainerMobile: {
     display: "flex",
@@ -67,7 +71,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
+const MenuBurger = ({ width, height, limit, menuOpenState, onMenuClose }) => {
   const classes = useStyles();
   const { drawerMain, containerMain, divider, dividerContainer } = classes;
   return (
@@ -125,12 +129,17 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
         </Grid>
       ) : (
         <Container className={classes.gridTileDesktop}>
-          <GridList cellHeight={"(100 / 7)vh"} cols={5} rows={7}>
+          <GridList
+            cellHeight={height / 7}
+            className={classes.gridTile}
+            cols={5}
+            rows={7}
+          >
             <GridListTile cols={4} rows={7}>
               <Header />
-              <GridList cellHeight={"(100 / 5)vh"} cols={4} rows={5}>
+              <GridList cols={4} rows={5}>
                 <GridListTile cols={2} rows={5}>
-                  <GridList cellHeight={"(100 / 5)vh"} cols={1} rows={5}>
+                  <GridList cols={1} rows={5}>
                     <GridListTile cols={1} rows={1}>
                       <Typography className={classes.button}>Search</Typography>
                     </GridListTile>
