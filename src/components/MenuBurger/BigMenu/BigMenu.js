@@ -13,6 +13,7 @@ const useStyles = makeStyles(() => ({
     fontSize: "12vw",
     WebkitTextStrokeColor: "white",
     WebkitTextStrokeWidth: "1px",
+    textTransform: 'uppercase',
     "&:hover": {
       color: "white",
     },

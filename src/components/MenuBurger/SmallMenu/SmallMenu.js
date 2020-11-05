@@ -8,6 +8,7 @@ const useStyles = makeStyles(() => ({
     color: "lightgray",
     fontSize: "3vw",
     alignSelf: "center",
+    
     "&:hover": {
       color: "white",
     },
