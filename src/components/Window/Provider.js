@@ -6,6 +6,7 @@ export const withWindowProvider = (Component) => {
     const getDimensions = () => {
       const w = window;
       const d = document;
+      const limit = 600;
       const documentElement = d.documentElement;
       const body = d.getElementsByTagName("body")[0];
       const width =
@@ -13,7 +14,7 @@ export const withWindowProvider = (Component) => {
       const height =
         w.innerHeight || documentElement.clientHeight || body.clientHeight;
 
-      return { width, height };
+      return { width, height, limit };
     };
 
     const [dimension, setDimension] = useState(getDimensions());

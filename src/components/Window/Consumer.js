@@ -5,8 +5,8 @@ export const withWindowConsumer = (Component) => {
   const WithWindowConsumer = (props) => {
     return (
       <WindowContext.Consumer>
-        {({ width, height }) => (
-          <Component {...props} width={width} height={height} />
+        {({ width, height, limit }) => (
+          <Component {...props} width={width} height={height} limit={limit} />
         )}
       </WindowContext.Consumer>
     );

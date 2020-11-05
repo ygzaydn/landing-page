@@ -73,7 +73,7 @@ const MenuBurger = ({ width, limit, menuOpenState, onMenuClose }) => {
             container: containerMain,
           }}
         >
-          <Header onMenuClose={onMenuClose} limit={limit} />
+          <Header onMenuClose={onMenuClose} />
           {items.map((el) => (
             <Grid item xs={12}>
               <Typography className={classes.listItem}>{el}</Typography>
